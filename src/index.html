@@ -3,19 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homework 9</title>
+    <title>Homework 11</title>
     <link rel="stylesheet" href="css/common.css" />
   </head>
   <body>
-    <form class="search-form" id="search-form">
-      <input
-        type="text"
-        name="searchQuery"
-        autocomplete="off"
-        placeholder="Search images..."
-      />
-      <button type="submit">Search</button>
-    </form>
+    <section>
+      <form class="search-form" id="search-form">
+        <input
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Search images..."
+        />
+        <button type="submit" class="button submit-button">Search</button>
+      </form>
+      <div class="container">
+        <div class="gallery"></div>
+        <button type="button" class="button load-more visually-hidden">
+          Load more
+        </button>
+      </div>
+    </section>
 
     <script type="module" src="./index.js"></script>
   </body>
