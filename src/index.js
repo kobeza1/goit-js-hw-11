@@ -33,6 +33,7 @@ async function onFormSubmit(event) {
     apiService.totalImages = totalHits;
     const markup = await renderImages(hits);
     refs.gallery.innerHTML = markup;
+
     refs.loadMoreBtn.classList.remove('visually-hidden');
     lightbox.refresh();
   } catch (error) {
@@ -57,5 +58,14 @@ async function onLoadMoreBtnClick() {
 
   const markup = await renderImages(hits);
   refs.gallery.insertAdjacentHTML('beforeend', markup);
+
+  const { height: cardHeight } = document
+    .querySelector('.gallery')
+    .firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
   lightbox.refresh();
 }
