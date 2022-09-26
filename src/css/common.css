@@ -50,6 +50,7 @@ p {
   border-radius: 20px;
   background-color: burlywood;
   margin-bottom: 40px;
+  margin-top: 20px;
 }
 
 .visually-hidden {
@@ -117,6 +118,7 @@ input:focus {
 
 .info {
   display: flex;
+  margin-top: 5px;
 }
 
 .info-item {
