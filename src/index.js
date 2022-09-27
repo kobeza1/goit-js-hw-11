@@ -8,6 +8,7 @@ const refs = {
   form: document.querySelector('.search-form'),
   gallery: document.querySelector('.gallery'),
   loadMoreBtn: document.querySelector('.load-more'),
+  // intersection: document.querySelector('.intersection-element'),
 };
 
 const apiService = new ApiService();
@@ -36,6 +37,7 @@ async function onFormSubmit(event) {
 
     refs.loadMoreBtn.classList.remove('visually-hidden');
     lightbox.refresh();
+    // createObserver();
   } catch (error) {
     Notify.failure(
       'Sorry, there are no images matching your search query. Please try again.'
@@ -69,3 +71,30 @@ async function onLoadMoreBtnClick() {
   });
   lightbox.refresh();
 }
+
+// Infinite scroll
+
+// function createObserver() {
+//   const options = {
+//     root: null,
+//     rootMargin: '100px',
+//   };
+
+//   const observer = new IntersectionObserver(handleIntersect, options);
+//   observer.observe(refs.intersection);
+// }
+
+// async function handleIntersect() {
+//   if (imagesValue >= apiService.totalImages) {
+//     Notify.failure(
+//       "We're sorry, but you've reached the end of search results."
+//     );
+//     return;
+//   }
+//   apiService.incrementPage();
+//   const [hits, totalHits] = await apiService.fetchImages();
+//   imagesValue += hits.length;
+
+//   const markup = await renderImages(hits);
+//   refs.gallery.insertAdjacentHTML('beforeend', markup);
+// }
