@@ -25,6 +25,9 @@ refs.loadMoreBtn.addEventListener('click', onLoadMoreBtnClick);
 async function onFormSubmit(event) {
   event.preventDefault();
   try {
+    if (!refs.loadMoreBtn.classList.contains('visually-hidden')) {
+      refs.loadMoreBtn.classList.add('visually-hidden');
+    }
     apiService.query = event.currentTarget.elements.searchQuery.value;
     apiService.resetPage();
 
@@ -34,9 +37,11 @@ async function onFormSubmit(event) {
     apiService.totalImages = totalHits;
     const markup = await renderImages(hits);
     refs.gallery.innerHTML = markup;
-
-    refs.loadMoreBtn.classList.remove('visually-hidden');
     lightbox.refresh();
+
+    if (apiService.totalHits >= 40) {
+      refs.loadMoreBtn.classList.remove('visually-hidden');
+    }
     // createObserver();
   } catch (error) {
     Notify.failure(
